@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import Navbar from "./container/Navbar";
 import AppLayoutWrapper from "./common/wrapper/AppLayoutWrapper";
-import Bookmarks from "./container/Bookmarks";
+import Sidebar from "./container/Sidebar";
 import Reader from "./container/Reader";
 import Signin from "./container/Signin";
 
@@ -14,19 +14,24 @@ function App() {
     auth: true,
     currentUser: "Avinash",
     currentDocument: null,
-    documents: [
-      {
-        id: 1,
-        name: "Java textbook",
-        url: "https://gfgc.kar.nic.in/sirmv-science/GenericDocHandler/138-a2973dc6-c024-4d81-be6d-5c3344f232ce.pdf"
-      },
-      {
-        id: 2,
-        name: "React textbook",
-        url: "https://www.newline.co/fullstack-react/assets/media/sGEMe/MNzue/30-days-of-react-ebook-fullstackio.pdf"
-      }
-    ]
   })
+
+  const [documents, setDocuments] = useState([
+    {
+      name: "Java textbook",
+      url: "https://gfgc.kar.nic.in/sirmv-science/GenericDocHandler/138-a2973dc6-c024-4d81-be6d-5c3344f232ce.pdf"
+    },
+    {
+      name: "React textbook",
+      url: "https://www.newline.co/fullstack-react/assets/media/sGEMe/MNzue/30-days-of-react-ebook-fullstackio.pdf"
+    }
+  ])
+
+  const removeDocument = index =>
+    setDocuments(array => array.splice(index))
+
+  const addDocument = document =>
+    setDocuments(array => array.concat(document))
 
   const openReader = document =>
     setState(previousState => ({
@@ -49,10 +54,12 @@ function App() {
         state.auth ?
           <AppLayoutWrapper
             sidebarComponent={
-              <Bookmarks
+              <Sidebar
                 username={state.currentUser}
                 openReader={openReader}
-                documents={state.documents}
+                documents={documents}
+                addDocument={addDocument}
+                removeDocument={removeDocument}
               />
             }
             mainComponent={
