@@ -8,8 +8,8 @@ function BookmarksComponent(props) {
         {
             Object.values(props.documents)
                 .map(item =>
-                    <ZeroPaddingWrapper styles={{}}>
-                        <div onClick={() => props.openReader()}>
+                    <ZeroPaddingWrapper key={item.id} styles={{}}>
+                        <div className="documentName" onClick={() => props.openReader(item)}>
                             {item.id}. {item.name}
                         </div>
                     </ZeroPaddingWrapper>

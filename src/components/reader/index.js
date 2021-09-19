@@ -1,10 +1,18 @@
-function ReaderComponent({fileURL}) {
+import ZeroPaddingWrapper from "../../common/wrapper/ZeroPaddingWrapper";
 
-    return (
-        <iframe width="100%" height="100%" src={fileURL} title="title">
-            Presss me: <a href={fileURL}>Download PDF</a>
-        </iframe>
-    );
+function ReaderComponent(props) {
+
+    return (<>
+        {
+            props.content ?
+                <iframe width="100%" height="100%" src={props.content.url} title="title">
+                    Presss me: <a href={props.content.url}>Download PDF</a>
+                </iframe> :
+                <ZeroPaddingWrapper styles={{ display: "grid", placeItems: "center", height: "100%" }}>
+                    <h6>Click on a document to open it</h6>
+                </ZeroPaddingWrapper>
+        }
+    </>);
 }
 
 export default ReaderComponent

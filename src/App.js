@@ -6,6 +6,8 @@ import Bookmarks from "./container/Bookmarks";
 import Reader from "./container/Reader";
 import Signin from "./container/Signin";
 
+import "./App.css";
+
 function App() {
 
   const [state, setState] = useState({
