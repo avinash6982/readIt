@@ -28,7 +28,7 @@ function App() {
   ])
 
   const removeDocument = index =>
-    setDocuments(array => array.splice(index))
+    setDocuments(array => array.splice(index, 1))
 
   const addDocument = document =>
     setDocuments(array => array.concat(document))
