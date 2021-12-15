@@ -3,7 +3,12 @@ import ZeroPaddingWrapper from "./ZeroPaddingWrapper";
 function AppLayoutWrapper(props) {
 
     return (
-        <ZeroPaddingWrapper styles={{ display: "grid", gridTemplateColumns: "25% 1fr", height: "calc(100vh - 3em)" }}>
+        <ZeroPaddingWrapper
+            styles={{
+                display: "grid",
+                gridTemplateColumns: "25% 1fr",
+                height: "calc(100vh - 3em)"
+            }}>
             <ZeroPaddingWrapper
                 styles={{
                     backgroundColor: "#989595",

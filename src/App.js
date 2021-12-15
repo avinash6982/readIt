@@ -11,8 +11,8 @@ import "./App.css";
 function App() {
 
   const [state, setState] = useState({
-    auth: true,
-    currentUser: "Avinash",
+    auth: false,
+    currentUser: null,
     currentDocument: null,
   })
 
